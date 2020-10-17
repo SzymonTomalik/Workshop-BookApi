@@ -46,6 +46,12 @@ public class BookController {
     public void removeBook(@PathVariable Long id) {
         bookServiceInterface.delete(id);
     }
+
+    @PutMapping("")
+    @ResponseBody
+    public void updateBook(@RequestBody Book book) {
+        bookServiceInterface.update(book);
+    }
 }
 
 

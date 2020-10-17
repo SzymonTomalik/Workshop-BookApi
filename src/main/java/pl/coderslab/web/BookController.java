@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.coderslab.domain.Book;
-import pl.coderslab.domain.BookService;
+import pl.coderslab.domain.BookServiceInterface;
 
 import java.util.List;
 
@@ -17,34 +17,34 @@ public class BookController {
                 "Bruce Eckel", "Helion", "programming");
     }
 
-    private BookService bookService;
+    private BookServiceInterface bookServiceInterface;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public BookController(BookServiceInterface bookServiceInterface) {
+        this.bookServiceInterface = bookServiceInterface;
     }
 
 
     @GetMapping("")
     public @ResponseBody
     List<Book> getList() {
-        return bookService.getBooks();
+        return bookServiceInterface.getBooks();
     }
 
     @PostMapping("")
     public void addBook(@RequestBody Book book) {
-        bookService.add(book);
+        bookServiceInterface.add(book);
     }
 
     @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id) {
-        return this.bookService.get(id).orElseThrow(() -> {
+        return this.bookServiceInterface.get(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unfortunately a book of this Id was not found in base");
         });
     }
 
     @DeleteMapping("/{id}")
     public void removeBook(@PathVariable Long id) {
-        bookService.delete(id);
+        bookServiceInterface.delete(id);
     }
 }
 

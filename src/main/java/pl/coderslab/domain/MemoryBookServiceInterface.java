@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class MemoryBookService implements BookService {
+public class MemoryBookServiceInterface implements BookServiceInterface {
     private List<Book> list;
     private static Long nextId = 4L;
 
-    public MemoryBookService() {
+    public MemoryBookServiceInterface() {
         list = new ArrayList<>();
         list.add(new Book(1L, "9788324631766", "Thiniking	in	Java", "Bruce	Eckel", "Helion", "programming"));
         list.add(new Book(2L, "9788324627738", "Rusz	glowa	Java.", "Sierra	Kathy,	Bates	Bert", "Helion",
@@ -33,7 +33,7 @@ public class MemoryBookService implements BookService {
     }
 
     public static void setNextId(Long nextId) {
-        MemoryBookService.nextId = nextId;
+        MemoryBookServiceInterface.nextId = nextId;
     }
 
     @Override

@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class MemoryBookServiceInterface implements BookServiceInterface {
+public class MemoryBookService implements BookServiceInterface {
     private List<Book> list;
     private static Long nextId = 4L;
 
-    public MemoryBookServiceInterface() {
+    public MemoryBookService() {
         list = new ArrayList<>();
         list.add(new Book(1L, "9788324631766", "Thiniking	in	Java", "Bruce	Eckel", "Helion", "programming"));
         list.add(new Book(2L, "9788324627738", "Rusz	glowa	Java.", "Sierra	Kathy,	Bates	Bert", "Helion",
@@ -33,7 +33,7 @@ public class MemoryBookServiceInterface implements BookServiceInterface {
     }
 
     public static void setNextId(Long nextId) {
-        MemoryBookServiceInterface.nextId = nextId;
+        MemoryBookService.nextId = nextId;
     }
 
     @Override
@@ -45,12 +45,11 @@ public class MemoryBookServiceInterface implements BookServiceInterface {
     public void add(Book book) {
         book.setId(nextId++);
         list.add(book);
-
     }
 
     @Override
     public Optional<Book> get(Long id) {
-        return list.stream().filter(item->item.getId().equals(id)).findFirst();
+        return list.stream().filter(item -> item.getId().equals(id)).findFirst();
     }
 
     @Override
@@ -63,7 +62,7 @@ public class MemoryBookServiceInterface implements BookServiceInterface {
     @Override
     public void update(Book book) {
         if (this.get(book.getId()).isPresent()) {
-            int bookIndex=list.indexOf(this.get(book.getId()).get());
+            int bookIndex = list.indexOf(this.get(book.getId()).get());
             list.set(bookIndex, book);
         }
     }

@@ -23,7 +23,6 @@ public class BookController {
         this.bookServiceInterface = bookServiceInterface;
     }
 
-
     @GetMapping("")
     public @ResponseBody
     List<Book> getList() {
@@ -38,7 +37,7 @@ public class BookController {
     @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id) {
         return this.bookServiceInterface.get(id).orElseThrow(() -> {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unfortunately a book of this Id was not found in base");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unfortunately a book of this Id was not found in database");
         });
     }
 

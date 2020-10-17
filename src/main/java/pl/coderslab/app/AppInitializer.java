@@ -1,4 +1,4 @@
-package pl.coderslab;
+package pl.coderslab.app;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class MemoryBookService implements BookServiceInterface {
+public class MemoryBookService implements BookService {
     private List<Book> list;
     private static Long nextId = 4L;
 

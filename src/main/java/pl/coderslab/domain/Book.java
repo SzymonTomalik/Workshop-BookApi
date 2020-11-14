@@ -1,11 +1,32 @@
 package pl.coderslab.domain;
 
+import org.hibernate.validator.constraints.ISBN;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotEmpty
+    @ISBN
     private String isbn;
+    @NotNull
+    @NotEmpty
     private String title;
+    @NotNull
+    @NotEmpty
     private String author;
+    @NotNull
+    @NotEmpty
     private String publisher;
+    @NotNull
+    @NotEmpty
     private String type;
 
     public Book() {
